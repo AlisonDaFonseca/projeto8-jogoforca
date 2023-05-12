@@ -4,7 +4,7 @@ const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 export default function Letras({botao}){
     return (
         <div className="botoes-letras ">
-            {alfabeto.map((botoes, index) => (<button key={index} className={botao}>{botoes}</button>))}
+            {alfabeto.map((botoes, index) => (<button key={index} disabled={botao}>{botoes}</button>))}
         </div>
     );
 }

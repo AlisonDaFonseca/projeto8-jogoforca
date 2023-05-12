@@ -1,10 +1,14 @@
-import estadoInicial from "./assets/forca0.png"
 
-export default function Jogo(){
+
+export default function Jogo({setBotao, imagem}){
+   
     return (
         <div className="jogo">
-            <img src={estadoInicial} alt="imagem forca"/>
-            <button>Escolher palavra</button> 
+            <img src={imagem} alt="imagem forca"/>
+            <div>
+                <button onClick={() => setBotao(false)}>Escolher palavra</button> 
+            </div>
+            
         </div>
         
     );
