@@ -12,7 +12,7 @@ export default function Letras({botao, letras, setLetras, palavra, contaErro, se
             {alfabeto.map((letra, index) => {
                 
                 return (
-                    <button key={index} onClick={() => {
+                    <button data-test="letter" key={index} onClick={() => {
                         novaArrayLetras.push(letra);
                         setLetras(novaArrayLetras);
                         if(!palavra.includes(letra)){

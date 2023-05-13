@@ -30,9 +30,9 @@ export default function App() {
 
     palavra.map((letra) => {
       if (letras.includes(letra)) {
-        arrayPalavras.push(letra)
+        arrayPalavras.push(letra);
       } else {
-        arrayPalavras.push('_ ')
+        arrayPalavras.push('_ ');
       }
     })
 
