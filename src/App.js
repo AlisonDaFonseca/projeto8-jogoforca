@@ -15,12 +15,27 @@ import { useState } from "react";
 
 export default function App() {
   palavras.sort(comparador);
-  let novaPalavra = palavras[0].split('')
+  
   
   const [palavra, setPalavra] = useState('');
+  const novaArrayPalavras = [];
+  const [letras, setLetras] = useState('');
   const [botao, setBotao] = useState(true);
   const [contaErro, setContaErro] = useState(0);
   let imagemForca = estado0;
+  
+  if(palavra !== ''){
+    palavra.map((letra) => {
+      if(letras.includes(letra)){
+        novaArrayPalavras.push(letra)
+      }else{
+        novaArrayPalavras.push('_ ')
+      }
+    })  
+  }
+  
+  
+  console.log(novaArrayPalavras)
 
   if (contaErro === 0) {
     imagemForca = estado0;
@@ -40,8 +55,8 @@ export default function App() {
 
   return (
     <div>
-      <Jogo setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} />
-      <Letras botao={botao} />
+      <Jogo setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} novaArrayPalavras={novaArrayPalavras} />
+      <Letras botao={botao} letras={letras} setLetras={setLetras}/>
     </div>
   );
 }
@@ -50,3 +65,4 @@ export default function App() {
 function comparador(){
   return Math.random() - 0.5;
 }
+
