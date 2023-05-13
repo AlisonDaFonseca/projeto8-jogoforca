@@ -15,25 +15,30 @@ import { useState } from "react";
 
 export default function App() {
   palavras.sort(comparador);
-  
-  
+
+
   const [palavra, setPalavra] = useState('');
-  const novaArrayPalavras = [];
+  const arrayPalavras = [];
   const [letras, setLetras] = useState('');
   const [botao, setBotao] = useState(true);
+  const [botaoP, setBotaoP] = useState(false);
   const [contaErro, setContaErro] = useState(0);
+  let venceOuPerde = '';
   let imagemForca = estado0;
-  
-  if(palavra !== ''){
+
+
+  if (palavra !== '') {
+
     palavra.map((letra) => {
-      if(letras.includes(letra)){
-        novaArrayPalavras.push(letra)
-      }else{
-        novaArrayPalavras.push('_ ')
+      if (letras.includes(letra)) {
+        arrayPalavras.push(letra)
+      } else {
+        arrayPalavras.push('_ ')
       }
-    })  
+    })
+
   }
-  
+
 
   if (contaErro === 0) {
     imagemForca = estado0;
@@ -51,16 +56,31 @@ export default function App() {
     imagemForca = estado6;
   }
 
+
+  if (palavra.toString() === arrayPalavras.toString() && imagemForca !== estado6) {
+    venceOuPerde = 'verde'
+    if (botao === false) {
+      setBotao(true);
+    }
+  }
+
+  if (imagemForca === estado6) {
+    venceOuPerde = 'vermelho';
+    if (botao === false) {
+      setBotao(true);
+    }
+  }
+
   return (
     <div>
-      <Jogo setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} novaArrayPalavras={novaArrayPalavras} />
-      <Letras palavra={palavra} contaErro={contaErro} setContaErro={setContaErro} botao={botao} setBotao={setBotao}letras={letras} setLetras={setLetras}/>
+      <Jogo botaoP={botaoP} setBotaoP={setBotaoP} venceOuPerde={venceOuPerde} setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} arrayPalavras={imagemForca !== estado6 ? arrayPalavras : palavra} />
+      <Letras palavra={palavra} contaErro={contaErro} setContaErro={setContaErro} botao={botao} setBotao={setBotao} letras={letras} setLetras={setLetras} />
     </div>
   );
 }
 
 
-function comparador(){
+function comparador() {
   return Math.random() - 0.5;
 }
 

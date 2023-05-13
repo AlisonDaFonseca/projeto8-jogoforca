@@ -1,10 +1,9 @@
-import { useState } from "react";
 import palavras from "./palavras";
 
 
-export default function Jogo({ setBotao, imagem, setPalavra , novaArrayPalavras}) {
-    const[botaoP, setBotaoP] = useState (false);
-   
+export default function Jogo({ botaoP, setBotaoP, venceOuPerde, setBotao, imagem, setPalavra , arrayPalavras}) {
+    
+    
 
     return (
         <div className="jogo">
@@ -15,7 +14,7 @@ export default function Jogo({ setBotao, imagem, setPalavra , novaArrayPalavras}
                     setPalavra(palavras[0].split(''));
                     setBotaoP(true);
                 }}>Escolher palavra</button>
-                <span>{novaArrayPalavras}</span>
+                <span className={venceOuPerde}>{arrayPalavras}</span>
             </div>
 
         </div>
