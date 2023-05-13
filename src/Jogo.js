@@ -1,7 +1,8 @@
 import palavras from "./palavras";
+import imagemInicial from "./assets/forca0.png"
 
 
-export default function Jogo({ botaoP, setBotaoP, venceOuPerde, setBotao, imagem, setPalavra , arrayPalavras}) {
+export default function Jogo({ setContaErro, contaErro, letras, setLetras, venceOuPerde, setBotao, imagem, setImagemForca, setPalavra , arrayPalavras}) {
     
     
 
@@ -9,10 +10,11 @@ export default function Jogo({ botaoP, setBotaoP, venceOuPerde, setBotao, imagem
         <div className="jogo">
             <img src={imagem} alt="imagem forca" />
             <div className="botao-e-palavra">
-                <button disabled={botaoP} onClick={() => {
+                <button onClick={() => {
+                    setContaErro(0);
+                    setLetras('')
                     setBotao(false);
                     setPalavra(palavras[0].split(''));
-                    setBotaoP(true);
                 }}>Escolher palavra</button>
                 <span className={venceOuPerde}>{arrayPalavras}</span>
             </div>

@@ -21,8 +21,7 @@ export default function App() {
   const arrayPalavras = [];
   const [letras, setLetras] = useState('');
   const [botao, setBotao] = useState(true);
-  const [botaoP, setBotaoP] = useState(false);
-  const [contaErro, setContaErro] = useState(0);
+  const [contaErro, setContaErro] = useState('');
   let venceOuPerde = '';
   let imagemForca = estado0;
 
@@ -73,7 +72,7 @@ export default function App() {
 
   return (
     <div>
-      <Jogo botaoP={botaoP} setBotaoP={setBotaoP} venceOuPerde={venceOuPerde} setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} arrayPalavras={imagemForca !== estado6 ? arrayPalavras : palavra} />
+      <Jogo setContaErro={setContaErro} letras={letras} setLetras={setLetras} venceOuPerde={venceOuPerde} setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} arrayPalavras={imagemForca !== estado6 ? arrayPalavras : palavra} />
       <Letras palavra={palavra} contaErro={contaErro} setContaErro={setContaErro} botao={botao} setBotao={setBotao} letras={letras} setLetras={setLetras} />
     </div>
   );
