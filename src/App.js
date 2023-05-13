@@ -34,8 +34,6 @@ export default function App() {
     })  
   }
   
-  
-  console.log(novaArrayPalavras)
 
   if (contaErro === 0) {
     imagemForca = estado0;
@@ -56,7 +54,7 @@ export default function App() {
   return (
     <div>
       <Jogo setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} novaArrayPalavras={novaArrayPalavras} />
-      <Letras botao={botao} letras={letras} setLetras={setLetras}/>
+      <Letras palavra={palavra} contaErro={contaErro} setContaErro={setContaErro} botao={botao} setBotao={setBotao}letras={letras} setLetras={setLetras}/>
     </div>
   );
 }

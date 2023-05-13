@@ -2,7 +2,7 @@ import { useState } from "react";
 import palavras from "./palavras";
 
 
-export default function Jogo({ setBotao, imagem, palavra, setPalavra , novaArrayPalavras}) {
+export default function Jogo({ setBotao, imagem, setPalavra , novaArrayPalavras}) {
     const[botaoP, setBotaoP] = useState (false);
    
 
