@@ -14,6 +14,10 @@ import { useState } from "react";
 
 
 export default function App() {
+  palavras.sort(comparador);
+  let novaPalavra = palavras[0].split('')
+  
+  const [palavra, setPalavra] = useState('');
   const [botao, setBotao] = useState(true);
   const [contaErro, setContaErro] = useState(0);
   let imagemForca = estado0;
@@ -36,10 +40,13 @@ export default function App() {
 
   return (
     <div>
-      <Jogo setBotao={setBotao} imagem={imagemForca} />
+      <Jogo setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} />
       <Letras botao={botao} />
     </div>
   );
 }
 
 
+function comparador(){
+  return Math.random() - 0.5;
+}
