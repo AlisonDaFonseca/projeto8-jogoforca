@@ -1,6 +1,11 @@
 
 export default function Chute({ botao, setContaErro, setLetras, palavra, textInput, setTextInput }) {
     
+    let novaPalavra = palavra;
+    novaPalavra = novaPalavra.toString();
+    let semVirgula = novaPalavra.replaceAll(',', '');
+    semVirgula = semVirgula.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    let novaArraySemAcentos = semVirgula.split('')
 
     return (
         <div className="chute">
@@ -9,7 +14,7 @@ export default function Chute({ botao, setContaErro, setLetras, palavra, textInp
             <button data-test="guess-button" onClick={() => {
                 let textoInput = textInput.split('');
                 textoInput = textoInput.toString();
-                let palavraExt = palavra.toString();
+                let palavraExt = novaArraySemAcentos.toString();
                
                 if(textoInput === palavraExt){
                     setLetras(textInput);

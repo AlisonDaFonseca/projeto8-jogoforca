@@ -5,6 +5,11 @@ export default function Letras({botao, letras, setLetras, palavra, contaErro, se
     const novaArrayLetras = [...letras];
     const botaoTrue = true;
     
+    let novaPalavra = palavra;
+    novaPalavra = novaPalavra.toString();
+    let semVirgula = novaPalavra.replaceAll(',', '');
+    semVirgula = semVirgula.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    let novaArraySemAcentos = semVirgula.split('')
     
 
     return (
@@ -15,7 +20,7 @@ export default function Letras({botao, letras, setLetras, palavra, contaErro, se
                     <button data-test="letter" key={index} onClick={() => {
                         novaArrayLetras.push(letra);
                         setLetras(novaArrayLetras);
-                        if(!palavra.includes(letra)){
+                        if(!novaArraySemAcentos.includes(letra)){
                             setContaErro(contaErro + 1);
                         }
                         

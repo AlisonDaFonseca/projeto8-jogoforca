@@ -29,10 +29,14 @@ export default function App() {
  
 
 
+
   if (palavra !== '') {
 
     palavra.map((letra) => {
-      if (letras.includes(letra)) {
+      let c = letra;
+      c = letra.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+      if (letras.includes(c)) {
         arrayPalavras.push(letra);
       } else {
         arrayPalavras.push('_ ');
