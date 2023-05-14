@@ -1,6 +1,7 @@
 import palavras from "./palavras";
 import Jogo from "./Jogo";
 import Letras from "./Letras";
+import Chute from "./Chute";
 import estado0 from "./assets/forca0.png";
 import estado1 from "./assets/forca1.png";
 import estado2 from "./assets/forca2.png";
@@ -22,8 +23,10 @@ export default function App() {
   const [letras, setLetras] = useState('');
   const [botao, setBotao] = useState(true);
   const [contaErro, setContaErro] = useState('');
+  const [textInput, setTextInput] = useState('');
   let venceOuPerde = '';
   let imagemForca = estado0;
+ 
 
 
   if (palavra !== '') {
@@ -74,6 +77,7 @@ export default function App() {
     <div>
       <Jogo setContaErro={setContaErro} letras={letras} setLetras={setLetras} venceOuPerde={venceOuPerde} setBotao={setBotao} imagem={imagemForca} palavra={palavra} setPalavra={setPalavra} arrayPalavras={imagemForca !== estado6 ? arrayPalavras : palavra} />
       <Letras palavra={palavra} contaErro={contaErro} setContaErro={setContaErro} botao={botao} setBotao={setBotao} letras={letras} setLetras={setLetras} />
+      <Chute botao={botao} setContaErro={setContaErro} setLetras={setLetras} palavra={palavra} textInput={textInput} setTextInput={setTextInput}/>
     </div>
   );
 }
